@@ -4,7 +4,7 @@ for (var i = 0; results.length; i++) {
     var newDiv = document.createElement("div");
     var newContent = document.createTextNode("Hi there and greetings!");
     var btn = document.createElement("BUTTON");
-    var t = document.createTextNode("CLICK ME");
+    var t = document.createTextNode(">>");
     btn.appendChild(t);
 
     //Grab the parent div so we can insert within the same place
