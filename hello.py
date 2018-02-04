@@ -1,8 +1,7 @@
 from flask import Flask, current_app, make_response, request
 from datetime import timedelta
 from functools import update_wrapper
-from Dank.py import wrapperSummary
-
+import Dank.py
 app = Flask(__name__)
 
 def crossdomain(origin=None, methods=None, headers=None, max_age=21600,
@@ -67,7 +66,7 @@ def hello():
 def data():
     #get requested url
     url = request.args.get('url')
-    para = wrapperSummary(url)
+    para = Dank.wrapperSummary(url)
     print(para)
     return para
     # return url
