@@ -4,7 +4,7 @@ Created on Sat Feb  3 04:27:29 2018
 
 @author: Paul
 """
-
+import nltk
 from nltk import tokenize as tk
 from nltk import corpus
 from nltk import stem
@@ -14,6 +14,7 @@ from watson_developer_cloud import NaturalLanguageUnderstandingV1
 from watson_developer_cloud.natural_language_understanding_v1 \
   import Features, EntitiesOptions, KeywordsOptions
 
+nltk.data.path.append('./nltk_data/')
 
 def stemmedPunctuationTokenized(sentence,stopword=set(corpus.stopwords.words("english"))):
     s = stem.PorterStemmer()
