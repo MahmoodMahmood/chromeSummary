@@ -1,7 +1,7 @@
 from flask import Flask, current_app, make_response, request
 from datetime import timedelta
 from functools import update_wrapper
-import Dank.py
+import Dank
 app = Flask(__name__)
 
 def crossdomain(origin=None, methods=None, headers=None, max_age=21600,
