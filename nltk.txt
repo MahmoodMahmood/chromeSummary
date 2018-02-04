@@ -1,1 +1,2 @@
-punkt\nstopwords
+punkt
+stopwords
