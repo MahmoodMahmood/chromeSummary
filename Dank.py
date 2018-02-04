@@ -12,7 +12,7 @@ import pandas as panda
 import tensorflow as tf
 import numpy as np
 import math as math
-import json 
+import json
 from watson_developer_cloud import NaturalLanguageUnderstandingV1
 from watson_developer_cloud.natural_language_understanding_v1 \
   import Features, EntitiesOptions, KeywordsOptions
@@ -21,11 +21,11 @@ def stemmedPunctuationTokenized(sentence):
     s = stem.PorterStemmer()
     tokenizer = tk.RegexpTokenizer(r'\w+')
     words = [s.stem(w) for w in tokenizer.tokenize(sentence) if not w in stopword]
-    return " ".join(words) 
+    return " ".join(words)
 
 urlTarget='https://en.wikipedia.org/wiki/Multivariable_calculus'
 nRelevance=10
-compressionRate=0.70 
+compressionRate=0.70
 nSent = 4
 sess = tf.Session()
 nl = NaturalLanguageUnderstandingV1(
@@ -39,9 +39,7 @@ response = nl.analyze(
     #entities=EntitiesOptions(emotion=True,sentiment=True,limit=2),
     keywords=KeywordsOptions(limit=nRelevance+1)),
   return_analyzed_text=True)
-  
-  
-  
+
 stopword = set(corpus.stopwords.words("english"));
 article = tk.sent_tokenize(response["analyzed_text"])
 
@@ -50,20 +48,20 @@ print(keywords)
 sentRelevance = []
 s = stem.PorterStemmer();
 for sent in article:
-    
+
     #Punctuation Filtered as well
     #tokenizer = tk.RegexpTokenizer(r'\w+')
     #words = [s.stem(w) for w in tokenizer.tokenize(sent) if not w in stopword]
     #Below keeps punctuation
     #words = [s.stem(w) for w in tk.word_tokenize(sent) if not w in stopword]
-   # print(words)
-    #stemmedSent = " ".join(words)    
+    #print(words)
+    #stemmedSent = " ".join(words)
     #print(stemmedSent)
     score = [k['relevance'] for k in keywords if stemmedPunctuationTokenized(sent).lower().find(stemmedPunctuationTokenized(k['text']).lower())!=-1]
     print(score)
     floatscore = [float(number) for number in score ]
     sentRelevance.append(np.sum(floatscore))
-    
+
 totalSent = np.size(sentRelevance)
 #nSentActual = math.floor(totalSent*(1-compressionRate))
 nSentActual = min(nSent,totalSent)
@@ -92,7 +90,7 @@ print("Original:")
 print(" ".join(article))
 #for sent in article:
  #   for w in stopword:
-  #      if 
+  #      if
 #print ((article))
 print((sentRelevance))
 #print(article)
