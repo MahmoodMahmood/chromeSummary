@@ -11,4 +11,5 @@ def hello():
 def data():
     #get requested url
     url = request.args.get('url')
+    print(url)
     return url
