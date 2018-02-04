@@ -4,6 +4,10 @@ from functools import update_wrapper
 import Dank.py
 app = Flask(__name__)
 
+import nltk
+nltk.download('stopwords')
+nltk.download('punkt')
+
 def crossdomain(origin=None, methods=None, headers=None, max_age=21600,
                 attach_to_all=True, automatic_options=True):
     """Decorator function that allows crossdomain requests.
