@@ -1,6 +1,6 @@
 var results = document.getElementsByClassName("st");
-var btncss = "color:green";
-var textcss = "color:red";
+var btncss = "color:green; background-colour:White; border:Green;";
+var textcss = "color:red; border:5px; border:Black";
 for (let i = 0; i < results.length; i++) {
     //Create the new content to be added
     let newDiv = document.createElement("div");
