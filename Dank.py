@@ -5,14 +5,11 @@ Created on Sat Feb  3 04:27:29 2018
 @author: Paul
 """
 
-from nltk import tokenize as tk;
-from nltk import corpus;
-from nltk import stem;
-import pandas as panda
+from nltk import tokenize as tk
+from nltk import corpus
+from nltk import stem
 import tensorflow as tf
 import numpy as np
-import math as math
-import json
 from watson_developer_cloud import NaturalLanguageUnderstandingV1
 from watson_developer_cloud.natural_language_understanding_v1 \
   import Features, EntitiesOptions, KeywordsOptions
