@@ -23,7 +23,7 @@ def stemmedPunctuationTokenized(sentence):
     words = [s.stem(w) for w in tokenizer.tokenize(sentence) if not w in stopword]
     return " ".join(words) 
 
-urlTarget='https://en.wikipedia.org/wiki/Multivariable_calculus'
+urlTarget='https://www.sciencedirect.com/science/article/pii/037838129502717S'
 nRelevance=10
 compressionRate=0.70 
 nSent = 4
