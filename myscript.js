@@ -1,12 +1,6 @@
-<<<<<<< HEAD
 var results = document.getElementsByClassName("rc");
-var btncss = "color:green";
-var textcss = "color:red";
-=======
-var results = document.getElementsByClassName("st");
 var btncss = "color:white;background-color:green;border-width:2px;border-color:#d3d3d3";
-var textcss = "color:black;background-color:#d3d3d3";
->>>>>>> 9b53d808cd5db7fbd483b7a553cc1954074a6fc2
+var textcss = "color:black;background-color:#d3d3d3;display:none";
 for (let i = 0; i < results.length; i++) {
     //Create the new content to be added
     let newDiv = document.createElement("div");
@@ -15,6 +9,20 @@ for (let i = 0; i < results.length; i++) {
     btn.style.cssText = btncss;//change css of all the buttons
     let t = document.createTextNode(">>");
     btn.appendChild(t);
+    btn.setAttribute("id","butt" + i);
+    btn.onclick=function(){
+        let butN = btn.getAttribute("id").substr(4);
+        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"+butN);
+        let targetS=document.getElementById("summary" + butN);
+        //targetS.style.display = "inline-block";
+        
+        if (targetS.style.display == "inline-block"){
+           targetS.style.display = "none"
+        }
+        else
+            targetS.style.display = "inline-block"
+            
+    }
     //Grab the parent div so we can insert within the same place
     //let parentDiv = results[i].parentNode;
     let child = results[i].getElementsByTagName("a")[0];
@@ -32,9 +40,11 @@ for (let i = 0; i < results.length; i++) {
         result.text().then(result => {
             console.log('current index i = ' + i);
             console.log(result);
-            let summary = document.createTextNode(result);
+            let summary = document.createElement("div");
+            summary.innerHTML = result;
+            summary.setAttribute("id","summary"+i);
             newDiv.appendChild(summary);
-            newDiv.style.cssText = textcss;//change the css of all the text 
+            summary.style.cssText = textcss;//change the css of all the text 
             // add the newly created element and its content into the DOM
             //nextSibiling helps put the code AFTER results[i]
             //parentDiv.insertBefore(newDiv, results[i].nextSibling);
