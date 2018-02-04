@@ -1,6 +1,7 @@
 from flask import Flask, current_app, make_response, request
 from datetime import timedelta
 from functools import update_wrapper
+from Dank.py import wrapperSummary
 
 app = Flask(__name__)
 
@@ -66,7 +67,8 @@ def hello():
 def data():
     #get requested url
     url = request.args.get('url')
-    print(url)
-    return url
+    para = wrapperSummary(url)
+    print(para)
+    return para
     # return url
 
