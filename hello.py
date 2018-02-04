@@ -10,5 +10,5 @@ def hello():
 @app.route('/data')
 def data():
     #get requested url
-    #url = request.args.get('url')
-    return "url is: "
+    url = request.args.get('url')
+    return url
