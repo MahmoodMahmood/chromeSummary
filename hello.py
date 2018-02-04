@@ -12,4 +12,7 @@ def data():
     #get requested url
     url = request.args.get('url')
     print(url)
-    return url
+    resp = Flask.Response(url)
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+    return resp
+    # return url
